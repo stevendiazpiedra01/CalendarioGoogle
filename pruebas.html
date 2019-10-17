@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="JS/JS/datetimepicker-master/build/jquery.datetimepicker.min.css">
+
+
+    <script src="JS/JS/datetimepicker-master/jquery.js"></script>
+    <script src="JS/JS/datetimepicker-master/build/jquery.datetimepicker.full.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <input name="datetime01" id="datetime">
+    <input type="datetime-local" id="01">
+
+    <button type="button" onclick="getDate()">Agregar</button>
+    <script>
+        $("#datetime").datetimepicker({
+            format: 'd-m-Y  H:i '
+        });
+
+        var date01;
+
+        function getDate() {
+            date01 = document.getElementById("datetime");
+            alert(date01.value);
+            date0 = document.getElementById("01");
+            alert(date0.value);
+
+            function rfc3339(d) {
+
+                function pad(n) {
+                    return n < 10 ? "0" + n : n;
+                }
+
+                function timezoneOffset(offset) {
+                    var sign;
+                    if (offset === 0) {
+                        return "Z";
+                    }
+                    sign = (offset > 0) ? "-" : "+";
+                    offset = Math.abs(offset);
+                    return sign + pad(Math.floor(offset / 60)) + ":" + pad(offset % 60);
+                }
+
+                return d.getFullYear() + "-" +
+                    pad(d.getMonth() + 1) + "-" +
+                    pad(d.getDate()) + "T" +
+                    pad(d.getHours()) + ":" +
+                    pad(d.getMinutes()) + ":" +
+                    pad(d.getSeconds()) +
+                    timezoneOffset(d.getTimezoneOffset());
+            }
+
+            lol = "2019-10-24T06:15";
+            alert(lol);
+            var d = new Date(lol);
+
+            alert(d);
+            alert(rfc3339(d));
+
+        }
+    </script>
+
+
+</body>
+
+</html>
